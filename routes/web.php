@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // @dd(Product::all());
+
+    return view('main', [
+        "products" => Product::all()
+    ]);
+});
+
+Route::get('/{id}', function ($id) {
+    // @dd(Product::find($id));
+
+    return view('product', [
+        "title" => Product::find($id)["title"],
+        "product" => Product::find($id)
+    ]);
 });
