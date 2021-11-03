@@ -4,20 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Foodie v0.1</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
+    <title>{{ $title }}</title>
 </head>
 <body>
-    <h1>Foodie v0.1</h1>
-    <h3>Teman setia untuk kamu para anak kos</h3>
+    <header class="header-container">
+        <h1>{{ $title }}</h1>
+        <h3>Teman setia untuk kamu para anak kos</h3>
+    </header>
 
     <div class="products-container">
 
     @foreach ($products as $product)
+        @php
+            $price = "Rp " . number_format($product["base_price"], 2, ',', '.');
+        @endphp
+
         <div class="products-item">
-            <img src="{{ $product["picture_url"] }}" class="products-img">
-            <h3><a href="{{ $product["id"] }}">{{ $product["title"] }}</a></h3>
-            <p>{{ $product["base_price"] }}</p>
+            <div class="img-container">
+                <img src="{{ $product["picture_url"] }}" class="products-img">
+            </div>
+            <h3><a class="products-title" href="/main/{{ $product["id"] }}">{{ $product["title"] }}</a></h3>
+            <h4>{{ $price }}</h4>
         </div>
     @endforeach
 

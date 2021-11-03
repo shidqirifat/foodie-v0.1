@@ -14,17 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    // @dd(Product::all());
-
+Route::get('/main', function () {
     return view('main', [
+        "title" => "Foodie v0.1",
         "products" => Product::all()
     ]);
 });
 
-Route::get('/{id}', function ($id) {
-    // @dd(Product::find($id));
-
+Route::get('/main/{id}', function ($id) {
     return view('product', [
         "title" => Product::find($id)["title"],
         "product" => Product::find($id)
