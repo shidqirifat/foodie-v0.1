@@ -61,7 +61,6 @@ body {
 .products-item, .product-container {
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(9.1px);
-    -webkit-backdrop-filter: blur(9.1px);
     border-radius: 10px;
     border: 1px solid #fff7fe;
     transition: all .3s;

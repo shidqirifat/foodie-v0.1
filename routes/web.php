@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -14,16 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/main', function () {
-    return view('main', [
-        "title" => "Foodie v0.1",
-        "products" => Product::all()
-    ]);
+Route::get('/', function () {
+    return view('welcome');
 });
 
-Route::get('/main/{id}', function ($id) {
-    return view('product', [
-        "title" => Product::find($id)["title"],
-        "product" => Product::find($id)
-    ]);
-});
+// ROUTE PROJECT FOODIE
+Route::get('/main', [ProductController::class, 'products']);
+
+Route::get('/main/{id}', [ProductController::class, 'product']);
